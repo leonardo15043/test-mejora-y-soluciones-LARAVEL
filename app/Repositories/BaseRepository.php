@@ -15,12 +15,16 @@ class BaseRepository
         $this->relations = $relations;
     }
 
-    public function all()
+    public function all($sort = [])
     {
         $query = $this->model;
-
+      
         if(!empty($this->relations)) {
             $query = $query->with($this->relations);
+        }
+
+        if($sort){
+            $query = $query->orderBy($sort['field'], $sort['order']);
         }
 
         return $query->get();

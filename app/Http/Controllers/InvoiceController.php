@@ -17,7 +17,9 @@ class InvoiceController extends Controller
 
     public function index()
     {
-        $invoices = $this->invoiceRepository->all();
+        $sort = request()->get('sort');
+       
+        $invoices = $this->invoiceRepository->all($sort);
 
         return response()->json($invoices);
     }
