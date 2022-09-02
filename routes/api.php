@@ -27,11 +27,21 @@ use Illuminate\Support\Facades\Route;
         Route::post('logout', 'App\Http\Controllers\AuthController@logout');
 
         Route::prefix('invoice')->group(function () {
+
             Route::get('all', 'App\Http\Controllers\InvoiceController@index');
             Route::get('view/{id}', 'App\Http\Controllers\InvoiceController@show');
             Route::post('add', 'App\Http\Controllers\InvoiceController@store');
             Route::put('edit/{id}', 'App\Http\Controllers\InvoiceController@update');
             Route::delete('delete/{id}', 'App\Http\Controllers\InvoiceController@destroy');
+
+            /*Route::prefix('detail')->group(function () {
+                Route::get('all', 'App\Http\Controllers\ProductController@index');
+            });*/
+
+        });
+
+        Route::prefix('product')->group(function () {
+            Route::get('all', 'App\Http\Controllers\ProductController@index');
         });
         
     });
