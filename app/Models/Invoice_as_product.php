@@ -13,6 +13,8 @@ class Invoice_as_product extends Model
 
     protected $fillable = [
         'id_invoice',
-        'id_product'
+        'id_product',
+        'units_product',
+        'total_value'
     ];
 }

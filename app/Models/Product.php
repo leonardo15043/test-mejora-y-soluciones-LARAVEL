@@ -13,8 +13,6 @@ class Product extends Model
 
     protected $fillable = [
         'description',
-        'units',
-        'unit_value',
-        'total_value'
+        'unit_value'
     ];
 }

@@ -38,10 +38,16 @@ class BaseRepository
         return $model;
     }
 
-    public function delete(Model $model)
+    public function update($request,$id)
     {
-        $model->delete();
+        $model = $this->model->find($id);
+        $model->update($request->all());
 
         return $model;
+    }
+
+    public function delete(int $id)
+    {
+        return $this->model->destroy($id);
     }
 }
