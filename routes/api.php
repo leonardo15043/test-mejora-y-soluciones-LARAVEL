@@ -34,9 +34,10 @@ use Illuminate\Support\Facades\Route;
             Route::put('edit/{id}', 'App\Http\Controllers\InvoiceController@update');
             Route::delete('delete/{id}', 'App\Http\Controllers\InvoiceController@destroy');
 
-            /*Route::prefix('detail')->group(function () {
-                Route::get('all', 'App\Http\Controllers\ProductController@index');
-            });*/
+            Route::prefix('product')->group(function () {
+                Route::post('assign', 'App\Http\Controllers\InvoiceProductController@store');
+                Route::delete('unassign/{id_invoice}/{id_product}', 'App\Http\Controllers\InvoiceProductController@unassign');
+            });
 
         });
 
