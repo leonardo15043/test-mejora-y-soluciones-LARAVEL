@@ -1,64 +1,62 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://web.mejoraysoluciones.com/wp-content/uploads/2021/05/cropped-logo_blackmejoras-352x101.png" width="400"></a></p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+## Test Mejora & Soluciones 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Prerrequisitos
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Instalar PHP y MYSQL, para facilitar el proceso podemos instalar [XAMPP](https://www.apachefriends.org/es/index.html)
+- Instalar [Composer](https://getcomposer.org/download/)
+- Instalar Laravel ```composer global require laravel/installer```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Proceso de instalación y configuración
 
-## Learning Laravel
+#### 1 - Dependencias de Composer
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```composer install```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+#### 2 - Crear archivo .env
 
-## Laravel Sponsors
+Este archivo contiene todas las variables de entorno del sistema y debe estar creado en la raíz del proyecto basado en el archivo de ejemplo **.env.example**
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+#### 3 - Crear base de datos
 
-### Premium Partners
+En Phpmyadmin creamos una base de datos llamada **soluciones**
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+#### 4 - Ejecutar migraciones
 
-## Contributing
+Las migraciones son básicamente la estructura de la base de datos que ya esta construida en el código para pasarla a MYSQL, esto lo podemos hacer con el siguiente comando.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Como las tablas tienen relaciones debemos ejecutar las migraciones individualmente en el siguiente orden 
 
-## Code of Conduct
+```
+php artisan migrate --path=/database/migrations/2022_08_31_224115_create_products_table.php 
+php artisan migrate --path=/database/migrations/2022_08_31_223957_create_invoices_table.php 
+php artisan migrate --path=/database/migrations/2022_09_01_143812_create_invoice_as_products_table.php 
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+#### 5 - Subir datos de prueba 
 
-## Security Vulnerabilities
+En este caso solo subiremos unos productos de ejemplo
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+php artisan db:seed
+```
 
-## License
+#### 6 - Generar llave secreta 
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+php artisan jwt:secret
+```
+
+#### 7 - Ejecutar proyecto
+
+```
+php artisan serve
+```
+
+#### Pruebas 
+
+Si queremos descargar y importar los servicios en Postman, lo podemos hacer en el siguiente [link](https://www.getpostman.com/collections/ead4b65cd396ab149389)  
+
+
