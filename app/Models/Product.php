@@ -11,6 +11,11 @@ class Product extends Model
 
     protected $table = 'products';
 
+    /**
+     * Product entity attributes
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'description',
         'unit_value'

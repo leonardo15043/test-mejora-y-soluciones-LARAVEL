@@ -11,6 +11,11 @@ class Invoice_as_product extends Model
 
     protected $table = 'invoice_as_products';
 
+    /**
+     * Invoice_as_products entity attributes
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'id_invoice',
         'id_product',

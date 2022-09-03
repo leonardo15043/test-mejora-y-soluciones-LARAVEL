@@ -15,6 +15,12 @@ class InvoiceProductController extends Controller
         $this->invoiceProductRepository = $invoiceProductRepository;
     }
 
+    /**
+     * Store a newly created invoice product in storage.
+     * 
+     * @param Request $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
         $invoiceProduct = new Invoice_as_product($request->all());
@@ -23,7 +29,15 @@ class InvoiceProductController extends Controller
         return response()->json($invoiceProduct);
     }
 
-    public function unassign(int $id_invoice, int $id_product){
+     /**
+     * Remove item from invoice
+     *
+     * @param int $id_invoice
+     * @param int $id_product
+     * @return \Illuminate\Http\Response
+     */
+    public function unassign(int $id_invoice, int $id_product)
+    {
         $invoiceProduct = $this->invoiceProductRepository->destroyAssign($id_invoice, $id_product);
 
         return response()->json($invoiceProduct);

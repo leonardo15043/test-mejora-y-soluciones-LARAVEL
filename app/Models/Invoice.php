@@ -11,6 +11,11 @@ class Invoice extends Model
 
     protected $table = 'invoices';
 
+    /**
+     * Invoice entity attributes
+     *
+     * @var array<int, string>
+     */
     protected $fillable = [
         'invoice_number',
         'sender_name',
