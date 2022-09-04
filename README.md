@@ -33,6 +33,7 @@ Como las tablas tienen relaciones debemos ejecutar las migraciones individualmen
 php artisan migrate --path=/database/migrations/2022_08_31_224115_create_products_table.php 
 php artisan migrate --path=/database/migrations/2022_08_31_223957_create_invoices_table.php 
 php artisan migrate --path=/database/migrations/2022_09_01_143812_create_invoice_as_products_table.php 
+php artisan migrate
 ```
 
 #### 5 - Subir datos de prueba 
