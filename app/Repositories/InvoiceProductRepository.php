@@ -15,4 +15,8 @@ class InvoiceProductRepository extends BaseRepository
         return $this->model->where('id_invoice',$id_invoice)->where('id_product',$id_product)->delete();
     }
 
+    public function getInvoiceProduct(int $id){
+        return $this->model->join('invoices','invoice_as_products.id_invoice','=','invoices.id')->where('invoices.id',$id)->get();
+    }
+
 }

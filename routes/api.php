@@ -36,6 +36,7 @@ use Illuminate\Support\Facades\Route;
 
             Route::prefix('product')->group(function () {
                 Route::post('assign', 'App\Http\Controllers\InvoiceProductController@store');
+                Route::get('view/{id}', 'App\Http\Controllers\InvoiceProductController@show');
                 Route::delete('unassign/{id_invoice}/{id_product}', 'App\Http\Controllers\InvoiceProductController@unassign');
             });
 

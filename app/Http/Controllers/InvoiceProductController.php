@@ -29,6 +29,19 @@ class InvoiceProductController extends Controller
         return response()->json($invoiceProduct);
     }
 
+    /**
+     * Get the list of products from an invoice
+     *
+     * @param int $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(int $id)
+    {
+        $invoice = $this->invoiceProductRepository->getInvoiceProduct($id);
+
+        return response()->json($invoice);
+    }
+
      /**
      * Remove item from invoice
      *
