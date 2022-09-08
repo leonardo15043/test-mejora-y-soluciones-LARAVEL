@@ -16,7 +16,10 @@ class InvoiceProductRepository extends BaseRepository
     }
 
     public function getInvoiceProduct(int $id){
-        return $this->model->join('invoices','invoice_as_products.id_invoice','=','invoices.id')->where('invoices.id',$id)->get();
+        return $this->model
+        ->join('invoices','invoice_as_products.id_invoice','=','invoices.id')
+        ->join('products','invoice_as_products.id_product','=','products.id')
+        ->where('invoices.id',$id)->get();
     }
 
 }
